@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="electroDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cust_ID" />
+          </Key>
+          <Property Name="cust_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="l_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="b_date" Type="date" Nullable="false" />
+          <Property Name="is_seller" Type="bit" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cust_img" Type="image" />
+          <Property Name="is_trusted" Type="bit" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="p_ID" />
+          </Key>
+          <Property Name="p_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="p_cat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="p_desc" Type="varchar(max)" Nullable="false" />
+          <Property Name="p_price" Type="int" Nullable="false" />
+          <Property Name="p_img" Type="image" />
+          <Property Name="seller_ID" Type="int" Nullable="false" />
+          <Property Name="is_solled" Type="bit" />
+        </EntityType>
+        <EntityType Name="shipping_card">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p_ID" Type="int" Nullable="false" />
+          <Property Name="buyer_ID" Type="int" Nullable="false" />
+          <Property Name="seller_ID" Type="int" Nullable="false" />
+          <Property Name="is_approved" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_products_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="cust_ID" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="seller_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shipping_card_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="shipping_card" Type="Self.shipping_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="cust_ID" />
+            </Principal>
+            <Dependent Role="shipping_card">
+              <PropertyRef Name="buyer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="electroDBModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shipping_card" EntityType="Self.shipping_card" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_products_customer" Association="Self.FK_products_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shipping_card_customer" Association="Self.FK_shipping_card_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="shipping_card" EntitySet="shipping_card" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="electroDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cust_ID" />
+          </Key>
+          <Property Name="cust_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="l_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="b_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="is_seller" Type="Boolean" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cust_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="is_trusted" Type="Boolean" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_customer" FromRole="customer" ToRole="products" />
+          <NavigationProperty Name="shipping_card" Relationship="Self.FK_shipping_card_customer" FromRole="customer" ToRole="shipping_card" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="p_ID" />
+          </Key>
+          <Property Name="p_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="p_cat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="p_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="p_price" Type="Int32" Nullable="false" />
+          <Property Name="p_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="seller_ID" Type="Int32" Nullable="false" />
+          <Property Name="is_solled" Type="Boolean" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_products_customer" FromRole="products" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="shipping_card">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_ID" Type="Int32" Nullable="false" />
+          <Property Name="buyer_ID" Type="Int32" Nullable="false" />
+          <Property Name="seller_ID" Type="Int32" Nullable="false" />
+          <Property Name="is_approved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_shipping_card_customer" FromRole="shipping_card" ToRole="customer" />
+        </EntityType>
+        <Association Name="FK_products_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="products" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="cust_ID" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="seller_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shipping_card_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="shipping_card" Type="Self.shipping_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="cust_ID" />
+            </Principal>
+            <Dependent Role="shipping_card">
+              <PropertyRef Name="buyer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="electroDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="shipping_card" EntityType="Self.shipping_card" />
+          <AssociationSet Name="FK_products_customer" Association="Self.FK_products_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shipping_card_customer" Association="Self.FK_shipping_card_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="shipping_card" EntitySet="shipping_card" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="electroDBModelStoreContainer" CdmEntityContainer="electroDBEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="electroDBModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="cust_ID" ColumnName="cust_ID" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="b_date" ColumnName="b_date" />
+                <ScalarProperty Name="is_seller" ColumnName="is_seller" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="cust_img" ColumnName="cust_img" />
+                <ScalarProperty Name="is_trusted" ColumnName="is_trusted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="electroDBModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="p_ID" ColumnName="p_ID" />
+                <ScalarProperty Name="p_name" ColumnName="p_name" />
+                <ScalarProperty Name="p_cat" ColumnName="p_cat" />
+                <ScalarProperty Name="p_desc" ColumnName="p_desc" />
+                <ScalarProperty Name="p_price" ColumnName="p_price" />
+                <ScalarProperty Name="p_img" ColumnName="p_img" />
+                <ScalarProperty Name="seller_ID" ColumnName="seller_ID" />
+                <ScalarProperty Name="is_solled" ColumnName="is_solled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shipping_card">
+            <EntityTypeMapping TypeName="electroDBModel.shipping_card">
+              <MappingFragment StoreEntitySet="shipping_card">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="p_ID" ColumnName="p_ID" />
+                <ScalarProperty Name="buyer_ID" ColumnName="buyer_ID" />
+                <ScalarProperty Name="seller_ID" ColumnName="seller_ID" />
+                <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

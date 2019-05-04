@@ -1,0 +1,267 @@
+﻿<html>
+    <head>
+
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+
+                <style>
+
+
+
+
+                    input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 23%;
+}
+
+
+
+
+  div  ul{text-decoration-style:none;
+            margin:0px;
+            padding:0px;
+            list-style:none;
+
+        }
+
+   div ul li  {float:left;
+              font-family:Arial;
+              width:200px;
+              background-color:black;
+              color:white ;
+              margin:2px;
+              text-align:center
+              
+
+        }
+
+.columns {
+    float: left;
+    width: 33.3%;
+    padding: 8px;
+}
+
+.price {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+  .price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+ 
+ .price .header {
+    background-color:;
+    color: white;
+    font-size: 25px;
+}
+
+  .price  li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+  .price .grey {
+    background-color: #eee;
+    font-size: 20px;
+}
+
+  
+  
+    </style>
+
+    </head>
+ <body>
+
+     <form id="form1" runat="server">
+
+<nav class="navbar navbar-inverse">
+    <div class="navbar-header" >
+      <a class="navbar-brand" href="#">electro</a>
+    </div>
+  <div class="container-fluid"  >
+      <div>
+    <ul class="nav navbar-nav"  >
+      <li class="active" ><a href="default">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">cataloge <span class="caret"></span></a>
+        
+          <ul class="dropdown-menu">
+          <li><a href="#">TV</a></li>
+          <li><a href="#">microwave</a></li>
+          <li><a href=#">laptop</a></li>
+        </ul>
+      </li>
+      <li><a href="#">eee</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+          </div>
+
+<form >
+  <input type="text" name="search" placeholder="Search.." >
+</form>
+
+
+        <a href="#" class="btn btn-info btn-lg" style="width:10%;height:90% ;position:absolute;left:90%;top:0%">
+          <span class="glyphicon glyphicon-shopping-cart"></span>  Cart
+        </a>
+  </div>
+  
+       
+  
+      
+      </div>
+         </nav>
+
+ <div class="container">
+  <div class="jumbotron">
+    <h1>laptop</h1> 
+    <p>A laptop, also called a notebook computer or simply a notebook,
+        is a small, portable personal computer with a "clamshell" form factor, having, typically, a thin LCD or LED computer screen mounted on the inside of the upper
+        </p>
+      </div>
+ 
+     </div>
+     
+     
+         
+          
+         
+
+     </div>
+
+     <div class="columns">
+    
+       <ol class="price ">
+    
+           <li class="header a"> <a href="#"> <img src="13.png" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a> </li>
+    <li class="grey a">$ 9.99 / year</li>
+    <li>10GB Storage</li>
+    <li>0 Domains</li>
+    <li></li>
+    <li>
+        <asp:Button ID="Button5" runat="server"  Height="7%" Text="Button" Width="100%" class="btn btn-info" />
+           </li>
+  
+       </ol>
+      
+
+         </div>
+          <div class="columns">
+  <ol class="price">
+    <li class="header"> <a href="#"> <img src="14.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a> </li>
+    <li class="grey">$ 1000.99 $</li>
+    <li>2000TR Storage</li>
+    <li>16 RAM</li>
+    <li></li>
+    <li>
+        <asp:Button ID="Button6" runat="server"  Height="7%" Text="Button" Width="100%" class="btn btn-info" />
+      </li>
+  
+  </ol>
+</div>
+
+
+            <div class="columns">
+  <ol class="price">
+    <li class="header"> <a href="#"> <img src="15.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a> </li>
+    <li class="grey">$ 1000.99 $</li>
+    <li>2000TR Storage</li>
+    <li>16 RAM</li>
+    <li>
+    
+      </li>
+    <li>    <asp:Button ID="Button2" runat="server"  Height="7%" Text="Button" Width="100%" class="btn btn-info"/></li>
+  
+  </ol>
+</div>
+
+       <div class="columns">
+  <ol class="price">
+    <li class="header"> <a href="#"> <img src="16.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a> </li>
+    <li class="grey">$ 1000.99 $</li>
+    <li>2000TR Storage</li>
+    <li>16 RAM</li>
+    <li>
+        
+      </li>
+    <li> <asp:Button ID="Button1" runat="server"  Height="7%" Text="Button" Width="100%" class="btn btn-info" /></li>
+  
+  </ol>
+</div>
+
+
+
+
+
+
+            <div class="columns">
+  <ol class="price">
+    <li class="header"> <a href="#"> <img src="17.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a> </li>
+    <li class="grey">$ 1000.99 $</li>
+    <li>2000TR Storage</li>
+    <li>16 RAM</li>
+    <li></li>
+    <li>
+
+        <asp:Button ID="Button3" runat="server" Height="7%" Text="Button" Width="100%" class="btn btn-info" />
+      </li>
+  
+
+  </ol>
+</div>
+
+
+                 <div class="columns">
+  <ol class="price">
+    <li class="header"> <a href="#"> <img src="18.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a> </li>
+    <li class="grey">$ 1000.99 $</li>
+    <li>2000TR Storage</li>
+    <li>16 RAM</li>
+    <li></li>
+    <li>
+        <asp:Button ID="Button4" runat="server" Height="7%" Text="Button" Width="100%" class="btn btn-info" />
+      </li>
+  
+
+  </ol>
+</div>
+
+
+
+
+
+
+     </form>
+
+
+
+
+
+
+     </body>
+
+
+</html>
