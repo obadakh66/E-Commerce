@@ -14,7 +14,7 @@ namespace e_tekara
             int returnId = Convert.ToInt16(Session["userID"].ToString());
 
             // Entity object
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             functions user_functions = new functions();
             var review = from c in db.customers where c.cust_ID == returnId select c;
 
@@ -27,7 +27,7 @@ namespace e_tekara
             user_id_label.Text = userss.cust_ID.ToString();
             username_label.Text = userss.username;
             fullName_label.Text = userss.f_name + " " + userss.l_name;
-            DB_label.Text = userss.b_date.ToLongDateString();
+            DB_label.Text = userss.b_date.ToString();
             email_label.Text = userss.gender;
             if (userss.is_seller == true) { customer_type.Text = "Seller"; }
             if (userss.is_seller == false) { customer_type.Text = "Buyer"; }

@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4947c05943b7424ca6cb818a4c664ab7" Name="Diagram1">
-        <EntityTypeShape EntityType="electroDBModel.customer" Width="1.5" PointX="2.5" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="electroDBModel.product" Width="1.5" PointX="6.125" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="electroDBModel.shipping_card" Width="1.5" PointX="6.125" PointY="4.625" IsExpanded="true" />
-        <AssociationConnector Association="electroDBModel.FK_products_customer" ManuallyRouted="false" />
-        <AssociationConnector Association="electroDBModel.FK_shipping_card_customer" ManuallyRouted="false" />
+      <Diagram DiagramId="bc7fc3e5d6874a9faa85a4da7db312f8" Name="Diagram1">
+        <EntityTypeShape EntityType="ElectroDBModel.customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroDBModel.product" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroDBModel.shipping_card" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="ElectroDBModel.FK_product_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroDBModel.FK_shipping_card_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroDBModel.FK_shipping_card_product" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,6 +14,12 @@ namespace e_tekara
     
     public partial class product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public product()
+        {
+            this.shipping_card = new HashSet<shipping_card>();
+        }
+    
         public int p_ID { get; set; }
         public string p_name { get; set; }
         public string p_cat { get; set; }
@@ -24,5 +30,7 @@ namespace e_tekara
         public Nullable<bool> is_solled { get; set; }
     
         public virtual customer customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<shipping_card> shipping_card { get; set; }
     }
 }

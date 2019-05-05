@@ -17,7 +17,7 @@ namespace e_tekara
 
         protected void signup_btn_Click(object sender, EventArgs e)
         {
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             customer newCust = new customer();
             newCust.f_name = f_name.Text;
             newCust.l_name = l_name.Text;

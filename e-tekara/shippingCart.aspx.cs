@@ -15,7 +15,7 @@ namespace e_tekara
         public static string textQ = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             functions fun = new functions();
             int buyerid = Convert.ToInt16(Session["userID"].ToString());
             var shippings = db.shipping_card;
@@ -33,7 +33,7 @@ namespace e_tekara
         public void call_shippings(int id,int shID)
         {
             
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             functions fun = new functions();
             var products = db.products;
             foreach (var product in products)
@@ -145,7 +145,7 @@ namespace e_tekara
             string ll = button.ID;
             int length = ll.IndexOf("=");
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             int rating_id = Convert.ToInt16(button.ID.Substring(0, length));
             var review = from c in db.shipping_card where c.ID == rating_id select c;
 

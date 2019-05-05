@@ -25,7 +25,7 @@ namespace e_tekara
         {
             string userName = Session["userName"].ToString();
             int sID = Convert.ToInt16(Session["userID"].ToString());
-            electroDBEntities db2 = new electroDBEntities();
+            ElectroDBEntities db2 = new ElectroDBEntities();
             product newitem = new product();
 
             newitem.p_ID = 100;

@@ -18,8 +18,9 @@ namespace e_tekara
         public int p_ID { get; set; }
         public int buyer_ID { get; set; }
         public int seller_ID { get; set; }
-        public bool is_approved { get; set; }
+        public Nullable<bool> is_approved { get; set; }
     
         public virtual customer customer { get; set; }
+        public virtual product product { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace e_tekara
         public int login(customer user)
         {
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var myUser = db.customers.FirstOrDefault(u => u.username == user.username && u.pass == user.pass);
             var user2 = from u in db.customers
                         where u.username == user.username
@@ -55,7 +55,7 @@ namespace e_tekara
         {
             if (p_box.Controls.Count == 0)
             {
-                electroDBEntities db = new electroDBEntities();
+                ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -141,7 +141,7 @@ namespace e_tekara
         {
 
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -222,7 +222,7 @@ namespace e_tekara
         {
 
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -303,7 +303,7 @@ namespace e_tekara
         {
 
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -384,7 +384,7 @@ namespace e_tekara
         {
 
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -465,7 +465,7 @@ namespace e_tekara
         {
 
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -560,7 +560,7 @@ namespace e_tekara
 
             p_box.Controls.Clear();
 
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             var products = db.products;
             foreach (var product in products)
             {
@@ -642,7 +642,7 @@ namespace e_tekara
 
         public string itemImage_retrive(int itemid)
         {
-            var myEntity = new electroDBEntities();
+            var myEntity = new ElectroDBEntities();
 
             var query = myEntity.products.Where(p => p.p_ID == itemid)
                            .Select(p => p.p_img).FirstOrDefault();
@@ -666,7 +666,7 @@ namespace e_tekara
         {
 
 
-            var myEntity = new electroDBEntities();
+            var myEntity = new ElectroDBEntities();
 
             var query = myEntity.customers.Where(p => p.cust_ID == userid)
                            .Select(p => p.cust_img).FirstOrDefault();
@@ -692,7 +692,7 @@ namespace e_tekara
             Button button = (Button)sender;
             
             string buttonId = button.ID;
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             int rating_id = Convert.ToInt16(buttonId);
             var review = from c in db.products where c.p_ID == rating_id select c;
 
@@ -718,7 +718,7 @@ namespace e_tekara
             string ll = button.ID;
             int length = ll.IndexOf("=");
             
-            electroDBEntities db = new electroDBEntities();
+            ElectroDBEntities db = new ElectroDBEntities();
             int rating_id = Convert.ToInt16(button.ID.Substring(0, length));
             var review = from c in db.customers where c.cust_ID == rating_id select c;
 

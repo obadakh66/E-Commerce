@@ -25,8 +25,8 @@ namespace e_tekara
         public string f_name { get; set; }
         public string l_name { get; set; }
         public string gender { get; set; }
-        public System.DateTime b_date { get; set; }
-        public bool is_seller { get; set; }
+        public Nullable<System.DateTime> b_date { get; set; }
+        public Nullable<bool> is_seller { get; set; }
         public string username { get; set; }
         public string pass { get; set; }
         public byte[] cust_img { get; set; }
